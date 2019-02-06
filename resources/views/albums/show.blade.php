@@ -4,6 +4,11 @@
   <h1>{{$album->name}}</h1>
   <a href="/" class="button secondary">Go Back</a>
   <a href="/photos/create/{{$album->id}}" class="button">Upload Photo To Album</a>
+  
+  {!!Form::open(['action'=> ['AlbumsController@destroy', $album->id], 'method'=>'POST'])!!}
+    {{Form::hidden('_method', 'DELETE')}}
+    {{Form::submit('Delete Album', ['class'=>'button alert'])}}
+  {!!Form::close()!!}
   <hr>
   @if(count($album->photos) > 0)
     <?php
